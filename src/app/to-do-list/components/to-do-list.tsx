@@ -13,6 +13,12 @@ export function ToDoList() {
   const [filter, setFilter] = useState<Filter>('전체')
   const [sort, setSort] = useState<Sort>('기본')
 
+  const filteredList = list.filter((item) => {
+    if (filter === '완료') return item.isCompleted
+    else if (filter === '미완료') return !item.isCompleted
+    return true
+  })
+
   const handleTaskAdd = (task: Task) => {
     setList([...list, task])
   }
@@ -35,10 +41,14 @@ export function ToDoList() {
       <TaskInput onAdd={handleTaskAdd} />
       <TaskFilter current={filter} onChange={handleFilterChange} />
       <hr className="mt-2" />
-      <TaskSort list={list} current={sort} onChange={handleSortChange} />
-      {list.length !== 0 && (
+      <TaskSort
+        list={filteredList}
+        current={sort}
+        onChange={handleSortChange}
+      />
+      {filteredList.length !== 0 && (
         <TaskList
-          list={list}
+          list={filteredList}
           filter={filter}
           sort={sort}
           onChange={handleListUpdate}

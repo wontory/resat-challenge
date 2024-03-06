@@ -21,7 +21,6 @@ const badgeContents: { [key: number]: string } = {
 
 function TaskList({
   list,
-  filter,
   sort,
   onChange,
 }: {
@@ -30,12 +29,6 @@ function TaskList({
   sort: Sort
   onChange: (updatedList: Task[]) => void
 }) {
-  const filteredList = list.filter((item) => {
-    if (filter === '완료') return item.isCompleted
-    else if (filter === '미완료') return !item.isCompleted
-    return true
-  })
-
   const handleStatusUpdate = (
     id: number,
     e: React.ChangeEvent<HTMLInputElement>,
@@ -58,7 +51,7 @@ function TaskList({
 
   return (
     <div className="flex flex-col gap-2">
-      {filteredList
+      {list
         .toSorted((a, b) => {
           if (sort === '우선순위 낮은 순') return a.priority - b.priority
           else if (sort === '우선순위 높은 순') return b.priority - a.priority
