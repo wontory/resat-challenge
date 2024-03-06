@@ -1,3 +1,5 @@
+import { cn } from '@/utils/cn'
+
 function Select({
   children,
   className,
@@ -5,7 +7,10 @@ function Select({
 }: React.SelectHTMLAttributes<HTMLSelectElement>) {
   return (
     <select
-      className={`h-9 rounded-sm border px-3 py-1 text-sm shadow-sm transition-colors disabled:pointer-events-none disabled:opacity-50 ${className}`}
+      className={cn(
+        'h-9 rounded-md border px-3 py-1 text-sm shadow-sm transition-colors disabled:pointer-events-none disabled:opacity-50',
+        className,
+      )}
       {...props}
     >
       {children}

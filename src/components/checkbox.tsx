@@ -1,3 +1,5 @@
+import { cn } from '@/utils/cn'
+
 function Checkbox({
   className,
   ...props
@@ -5,7 +7,10 @@ function Checkbox({
   return (
     <input
       type="checkbox"
-      className={`h-4 w-4 rounded-sm border border-black accent-black shadow ${className}`}
+      className={cn(
+        'h-4 w-4 rounded-sm border border-black accent-black shadow',
+        className,
+      )}
       {...props}
     />
   )

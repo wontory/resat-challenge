@@ -3,6 +3,7 @@ import { Checkbox } from '@/components/checkbox'
 import { Input } from '@/components/input'
 
 import { Filter, Task } from './to-do-list.types'
+import { cn } from '@/utils/cn'
 
 const badgeVariants = {
   낮음: 'bg-green-500',
@@ -66,7 +67,10 @@ function TaskList({
                 className="border-none shadow-none"
               />
               <Badge
-                className={`ml-auto capitalize ${badgeVariants[item.priority]}`}
+                className={cn(
+                  'ml-auto capitalize',
+                  badgeVariants[item.priority],
+                )}
               >
                 {item.priority}
               </Badge>
