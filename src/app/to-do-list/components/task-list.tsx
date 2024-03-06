@@ -19,6 +19,12 @@ function TaskList({
   filter: Filter
   onChange: (updatedList: Task[]) => void
 }) {
+  const filteredList = list.filter((item) => {
+    if (filter === '완료') return item.isCompleted
+    else if (filter === '미완료') return !item.isCompleted
+    return true
+  })
+
   const handleStatusUpdate = (
     id: number,
     e: React.ChangeEvent<HTMLInputElement>,
@@ -32,13 +38,8 @@ function TaskList({
 
   return (
     <div className="flex flex-col gap-2">
-      {list
-        .filter((item) => {
-          if (filter === '완료') return item.isCompleted
-          else if (filter === '미완료') return !item.isCompleted
-          return true
-        })
-        .map((item) => (
+      {filteredList.length ? (
+        filteredList.map((item) => (
           <div
             key={`task-${item.id}`}
             className="flex items-center justify-between rounded-lg border p-4"
@@ -57,7 +58,10 @@ function TaskList({
               </Badge>
             </div>
           </div>
-        ))}
+        ))
+      ) : (
+        <div className="text-black/30">Empty list</div>
+      )}
     </div>
   )
 }
