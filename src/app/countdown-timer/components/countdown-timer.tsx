@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
 import { TimerInput } from './timer-input'
-import { TimerButton } from './timer-button'
+import { Button } from '@/components/button'
 
 export function CountdownTimer() {
   const [isRunning, setIsRunning] = useState(false)
@@ -75,23 +75,23 @@ export function CountdownTimer() {
         />
       </div>
       <div className="flex gap-4">
-        <TimerButton
+        <Button
           onClick={handleToggle}
           disabled={time === 0}
-          className={
+          className={`w-full ${
             isRunning
               ? 'bg-yellow-500 hover:bg-yellow-500/80'
               : 'bg-green-600 hover:bg-green-600/80'
-          }
+          }`}
         >
           {isRunning ? 'STOP' : 'START'}
-        </TimerButton>
-        <TimerButton
+        </Button>
+        <Button
           onClick={handleReset}
-          className="bg-red-600 hover:bg-red-600/80"
+          className="w-full bg-red-600 hover:bg-red-600/80"
         >
           RESET
-        </TimerButton>
+        </Button>
       </div>
     </div>
   )
