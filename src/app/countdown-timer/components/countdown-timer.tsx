@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { TimerInput } from './timer-input'
 import { Button } from '@/components/button'
 
-export function CountdownTimer() {
+function CountdownTimer() {
   const [isRunning, setIsRunning] = useState(false)
   const [time, setTime] = useState(0)
 
@@ -96,3 +96,5 @@ export function CountdownTimer() {
     </div>
   )
 }
+
+export { CountdownTimer }
