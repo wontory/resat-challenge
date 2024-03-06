@@ -1,10 +1,12 @@
 interface Task {
   id: number
   title: string
-  priority: '낮음' | '보통' | '높음' | '아주 높음'
+  priority: number
   isCompleted: boolean
 }
 
 type Filter = '전체' | '완료' | '미완료'
 
-export type { Task, Filter }
+type Sort = '기본' | '우선순위 높은 순' | '우선순위 낮은 순'
+
+export type { Task, Filter, Sort }

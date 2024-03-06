@@ -5,18 +5,25 @@ import { useState } from 'react'
 import { TaskInput } from './task-input'
 import { TaskFilter } from './task-filter'
 import { TaskList } from './task-list'
-import { Filter, Task } from './to-do-list.types'
+import { TaskSort } from './task-sort'
+import { Filter, Sort, Task } from './to-do-list.types'
 
 export function ToDoList() {
   const [list, setList] = useState<Task[]>([])
   const [filter, setFilter] = useState<Filter>('전체')
+  const [sort, setSort] = useState<Sort>('기본')
 
   const handleTaskAdd = (task: Task) => {
     setList([...list, task])
   }
 
-  const handleFilterChange = (appliedFilter: Filter) => {
-    setFilter(appliedFilter)
+  const handleFilterChange = (newFilter: Filter) => {
+    setFilter(newFilter)
+    setSort('기본')
+  }
+
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSort(event.target.value as Sort)
   }
 
   const handleListUpdate = (updatedList: Task[]) => {
@@ -27,7 +34,13 @@ export function ToDoList() {
     <div className="flex flex-col gap-4 rounded-lg border p-6 shadow-md">
       <TaskInput onAdd={handleTaskAdd} />
       <TaskFilter current={filter} onChange={handleFilterChange} />
-      <TaskList list={list} filter={filter} onChange={handleListUpdate} />
+      <TaskSort current={sort} onChange={handleSortChange} />
+      <TaskList
+        list={list}
+        filter={filter}
+        sort={sort}
+        onChange={handleListUpdate}
+      />
     </div>
   )
 }

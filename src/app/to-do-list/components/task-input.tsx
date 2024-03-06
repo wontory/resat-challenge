@@ -11,7 +11,7 @@ function TaskInput({ onAdd }: { onAdd: (task: Task) => void }) {
   const [task, setTask] = useState<Task>({
     id: 0,
     title: '',
-    priority: '낮음',
+    priority: 1,
     isCompleted: false,
   })
 
@@ -28,7 +28,7 @@ function TaskInput({ onAdd }: { onAdd: (task: Task) => void }) {
     setTask({
       id: task.id + 1,
       title: '',
-      priority: '낮음',
+      priority: 1,
       isCompleted: false,
     })
   }
@@ -47,13 +47,16 @@ function TaskInput({ onAdd }: { onAdd: (task: Task) => void }) {
         className="appearance-none rounded-none border-l-0"
         value={task.priority}
         onChange={(e) => {
-          setTask({ ...task, priority: e.target.value as Task['priority'] })
+          setTask({
+            ...task,
+            priority: Number(e.target.value),
+          })
         }}
       >
-        <Option value="낮음">낮음</Option>
-        <Option value="보통">보통</Option>
-        <Option value="높음">높음</Option>
-        <Option value="아주 높음">아주 높음</Option>
+        <Option value="1">낮음</Option>
+        <Option value="2">보통</Option>
+        <Option value="3">높음</Option>
+        <Option value="4">아주 높음</Option>
       </Select>
       <Button
         type="submit"
