@@ -58,43 +58,39 @@ function TaskList({
 
   return (
     <div className="flex flex-col gap-2">
-      {filteredList.length ? (
-        filteredList
-          .toSorted((a, b) => {
-            if (sort === '우선순위 낮은 순') return a.priority - b.priority
-            else if (sort === '우선순위 높은 순') return b.priority - a.priority
-            return a.id - b.id
-          })
-          .map((item) => (
-            <div
-              key={`task-${item.id}`}
-              className="flex items-center justify-between rounded-lg border p-4"
-            >
-              <div className="flex w-full items-center gap-2">
-                <Checkbox
-                  type="checkbox"
-                  checked={item.isCompleted}
-                  onChange={(e) => handleStatusUpdate(item.id, e)}
-                />
-                <Input
-                  value={item.title}
-                  onChange={(e) => handleTaskUpdate(item.id, e)}
-                  className="border-none shadow-none"
-                />
-                <Badge
-                  className={cn(
-                    'ml-auto capitalize',
-                    badgeVariants[item.priority],
-                  )}
-                >
-                  {badgeContents[item.priority]}
-                </Badge>
-              </div>
+      {filteredList
+        .toSorted((a, b) => {
+          if (sort === '우선순위 낮은 순') return a.priority - b.priority
+          else if (sort === '우선순위 높은 순') return b.priority - a.priority
+          return a.id - b.id
+        })
+        .map((item) => (
+          <div
+            key={`task-${item.id}`}
+            className="flex items-center justify-between rounded-lg border p-4"
+          >
+            <div className="flex w-full items-center gap-2">
+              <Checkbox
+                type="checkbox"
+                checked={item.isCompleted}
+                onChange={(e) => handleStatusUpdate(item.id, e)}
+              />
+              <Input
+                value={item.title}
+                onChange={(e) => handleTaskUpdate(item.id, e)}
+                className="border-none shadow-none"
+              />
+              <Badge
+                className={cn(
+                  'ml-auto capitalize',
+                  badgeVariants[item.priority],
+                )}
+              >
+                {badgeContents[item.priority]}
+              </Badge>
             </div>
-          ))
-      ) : (
-        <div className="text-black/30">Empty list</div>
-      )}
+          </div>
+        ))}
     </div>
   )
 }

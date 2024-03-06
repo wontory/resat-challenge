@@ -34,13 +34,16 @@ export function ToDoList() {
     <div className="flex flex-col gap-4 rounded-lg border p-6 shadow-md">
       <TaskInput onAdd={handleTaskAdd} />
       <TaskFilter current={filter} onChange={handleFilterChange} />
-      <TaskSort current={sort} onChange={handleSortChange} />
-      <TaskList
-        list={list}
-        filter={filter}
-        sort={sort}
-        onChange={handleListUpdate}
-      />
+      <hr className="mt-2" />
+      <TaskSort list={list} current={sort} onChange={handleSortChange} />
+      {list.length !== 0 && (
+        <TaskList
+          list={list}
+          filter={filter}
+          sort={sort}
+          onChange={handleListUpdate}
+        />
+      )}
     </div>
   )
 }
