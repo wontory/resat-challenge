@@ -58,7 +58,7 @@ function TaskInput({ onAdd }: { onAdd: (task: Task) => void }) {
       <Button
         type="submit"
         onClick={handleSubmit}
-        className="rounded-l-none bg-blue-600 hover:bg-blue-600/80"
+        className="rounded-l-none bg-blue-600 text-white hover:bg-blue-600/80"
       >
         추가
       </Button>

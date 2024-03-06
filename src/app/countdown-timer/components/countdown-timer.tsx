@@ -78,7 +78,7 @@ export function CountdownTimer() {
         <Button
           onClick={handleToggle}
           disabled={time === 0}
-          className={`w-full ${
+          className={`w-full text-white ${
             isRunning
               ? 'bg-yellow-500 hover:bg-yellow-500/80'
               : 'bg-green-600 hover:bg-green-600/80'
@@ -88,7 +88,7 @@ export function CountdownTimer() {
         </Button>
         <Button
           onClick={handleReset}
-          className="w-full bg-red-600 hover:bg-red-600/80"
+          className="w-full bg-red-600 text-white hover:bg-red-600/80"
         >
           RESET
         </Button>

@@ -17,7 +17,7 @@ function TaskFilter({
           key={`filter-${filter}`}
           className={`w-full ${
             current === filter
-              ? 'bg-black hover:bg-black/80'
+              ? 'bg-black text-white hover:bg-black/80'
               : 'border text-black hover:bg-black/10'
           }`}
           onClick={() => onChange(filter)}
