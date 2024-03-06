@@ -1,5 +1,6 @@
 import { Badge } from '@/components/badge'
 import { Checkbox } from '@/components/checkbox'
+import { Input } from '@/components/input'
 
 import { Filter, Task } from './to-do-list.types'
 
@@ -36,6 +37,15 @@ function TaskList({
     )
   }
 
+  const handleTaskUpdate = (
+    id: number,
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    onChange(
+      list.map((i) => (i.id === id ? { ...i, title: e.target.value } : i)),
+    )
+  }
+
   return (
     <div className="flex flex-col gap-2">
       {filteredList.length ? (
@@ -50,7 +60,11 @@ function TaskList({
                 checked={item.isCompleted}
                 onChange={(e) => handleStatusUpdate(item.id, e)}
               />
-              <span>{item.title}</span>
+              <Input
+                value={item.title}
+                onChange={(e) => handleTaskUpdate(item.id, e)}
+                className="border-none shadow-none"
+              />
               <Badge
                 className={`ml-auto capitalize ${badgeVariants[item.priority]}`}
               >
