@@ -1,19 +1,40 @@
 import Link from 'next/link'
 
-import Logo from '../assets/footer-logo.svg'
-import Instagram from '../assets/footer-instagram.svg'
+import { cn } from '@/utils/cn'
+
+import Logo from '../../assets/footer-logo.svg'
+import Instagram from '../../assets/footer-instagram.svg'
+
+function FooterLink({
+  href,
+  className,
+  children,
+}: {
+  href: string
+  className?: string
+  children: React.ReactNode
+}) {
+  return (
+    <Link
+      href={href}
+      className={cn('transition hover:text-blue-400', className)}
+    >
+      {children}
+    </Link>
+  )
+}
 
 function SiteFooter() {
   return (
     <footer className="flex flex-col border-t border-black/10 p-4 py-8">
       <div className="container mx-auto max-w-screen-lg">
         <div className="mb-8 flex items-center justify-between">
-          <Logo />
+          <Logo className="cursor-pointer" />
           <div className="flex gap-8 text-sm">
-            <Link href="">이용약관</Link>
-            <Link href="">개인정보취급방침</Link>
-            <Link href="">새로운 소식</Link>
-            <Link href="">자주하는 질문</Link>
+            <FooterLink href="">이용약관</FooterLink>
+            <FooterLink href="">개인정보취급방침</FooterLink>
+            <FooterLink href="">새로운 소식</FooterLink>
+            <FooterLink href="">자주하는 질문</FooterLink>
           </div>
         </div>
 
@@ -22,20 +43,23 @@ function SiteFooter() {
             <tbody className="text-left text-sm">
               <tr>
                 <th className="w-24 text-base font-bold">고객센터</th>
-                <td>이메일 help@miniintern.com / 전화 010-4875-3056</td>
+                <td>
+                  이메일 <FooterLink href="">help@miniintern.com</FooterLink> /
+                  전화 <FooterLink href="">010-4875-3056</FooterLink>
+                </td>
               </tr>
               <tr>
                 <th className="text-base font-bold">기업 서비스</th>
                 <td>
                   기업회원 페이지{' '}
-                  <Link href="" className="font-bold">
+                  <FooterLink href="" className="font-bold">
                     바로가기
-                  </Link>
+                  </FooterLink>
                 </td>
               </tr>
             </tbody>
           </table>
-          <Instagram />
+          <Instagram className="cursor-pointer" />
         </div>
         <hr className="my-6" />
         <div className="flex flex-col text-xs text-black/40">
@@ -55,7 +79,7 @@ function SiteFooter() {
                 제2021-3180239-14-5-00015호
               </span>
             </div>
-            <div className="text-sm">ⓒ OPENKNOWL</div>
+            <div className="cursor-pointer text-sm">ⓒ OPENKNOWL</div>
           </div>
         </div>
       </div>
