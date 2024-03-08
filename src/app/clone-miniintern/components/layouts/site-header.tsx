@@ -28,7 +28,7 @@ function HeaderLink({
 
 function SiteHeader() {
   return (
-    <header className="sticky top-0 w-full border-b border-black/10 bg-white">
+    <header className="sticky top-0 z-50 w-full border-b border-black/10 bg-white">
       <div className="container mx-auto flex max-w-screen-lg px-4 text-sm font-semibold text-black/30">
         <div className="flex items-center">
           <Link href="">
