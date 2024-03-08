@@ -5,7 +5,7 @@ import Logo from '../assets/header-logo.svg'
 function SiteHeader() {
   return (
     <header className="sticky top-0 w-full border-b border-black/10 bg-white">
-      <div className="container mx-auto flex max-w-screen-lg p-4 text-sm font-semibold text-black/30">
+      <div className="container mx-auto flex max-w-screen-lg px-4 py-3 text-sm font-semibold text-black/30">
         <div className="flex items-center">
           <Link href="">
             <Logo />
