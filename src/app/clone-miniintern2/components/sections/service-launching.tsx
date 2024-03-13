@@ -1,18 +1,29 @@
 import { Carousel, CarouselItem } from '../carousel'
 
-import Skillup5 from '../../assets/skillup5.png'
-import Skillup6 from '../../assets/skillup6.png'
-import Skillup7 from '../../assets/skillup7.png'
-import Skillup8 from '../../assets/skillup8.png'
-
 function ServiceLaunching() {
   return (
     <section className="container mx-auto flex max-w-screen-lg p-4 py-6 last:mb-16">
       <Carousel>
-        <CarouselItem src={Skillup5} alt={'skillup5'} />
-        <CarouselItem src={Skillup6} alt={'skillup6'} />
-        <CarouselItem src={Skillup7} alt={'skillup7'} />
-        <CarouselItem src={Skillup8} alt={'skillup8'} />
+        <CarouselItem>
+          구글 스프레드시트로
+          <br />
+          마케팅 데이터 분석하기
+        </CarouselItem>
+        <CarouselItem>
+          CRM 마케팅
+          <br />
+          이해하기
+        </CarouselItem>
+        <CarouselItem>
+          검색광고(SA)
+          <br />
+          이해하기
+        </CarouselItem>
+        <CarouselItem>
+          디스플레이 광고(DA)
+          <br />
+          이해하기
+        </CarouselItem>
       </Carousel>
       <div className="flex flex-col items-start">
         <div className="mt-4 rounded-r-full bg-blue-400 px-8 py-2 text-sm font-medium text-white">

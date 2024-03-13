@@ -1,7 +1,6 @@
 'use client'
 
 import { Children, useCallback, useEffect, useState } from 'react'
-import Image, { StaticImageData } from 'next/image'
 
 import { Button } from '@/components/button'
 import { Icons } from './icons'
@@ -51,16 +50,12 @@ function Carousel({ children }: { children: React.ReactNode }) {
   )
 }
 
-function CarouselItem({
-  src,
-  alt,
-}: {
-  src: string | StaticImageData
-  alt: string
-}) {
+function CarouselItem({ children }: { children?: React.ReactNode }) {
   return (
-    <div className="relative aspect-[6/4]">
-      <Image src={src} alt={alt} fill className="object-cover" />
+    <div className="relative aspect-[6/4] bg-green-400">
+      <span className="flex h-full w-full items-center justify-center text-center text-2xl font-semibold text-white">
+        {children}
+      </span>
     </div>
   )
 }
